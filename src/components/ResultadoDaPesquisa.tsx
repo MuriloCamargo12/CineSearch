@@ -22,9 +22,9 @@ export default function ResultadoDaPesquisa(props: any) {
       animate-jump-in animate-duration-500
       max-h-[90vh] overflow-y-auto
     ">
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-1/2 md:h-150 h-90 relative">
                     {loading && 
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-center items-center absolute z-10 inset-0">
                             <LoadingImg/>
                         </div>
                     }
