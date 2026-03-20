@@ -48,6 +48,7 @@ npm run dev
 
 - Swiperjs
 - Tabler.io
+- TailWindCSS Animated
 
 ## ⚙️ Funcionalidades
 
