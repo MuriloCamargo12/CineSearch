@@ -1,16 +1,20 @@
+'use client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconX } from "@tabler/icons-react"
 import Image from "next/image"
+import { useState } from "react"
+import LoadingImg from "./LoadingImg"
 
 
 export default function ResultadoDaPesquisa(props: any) {
     const dataLancamento = new Date(props.conteudo.release_date).toLocaleDateString("pt-BR")
     const dataAr = new Date(props.conteudo.first_air_date).toLocaleDateString("pt-BR")
-    
     const nota = Math.ceil(props.conteudo.vote_average)
+
+    const [loading, setLoading] = useState(true)
+    
     return (
         <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
-
             <div className="
       bg-neutral-900 rounded-2xl w-full max-w-5xl
       flex flex-col md:flex-row gap-5
@@ -19,10 +23,16 @@ export default function ResultadoDaPesquisa(props: any) {
       max-h-[90vh] overflow-y-auto
     ">
                 <div className="w-full md:w-1/2">
+                    {loading && 
+                        <div className="flex justify-center items-center">
+                            <LoadingImg/>
+                        </div>
+                    }
                     <Image
                         src={`https://image.tmdb.org/t/p/w500/${props.conteudo.poster_path}`}
                         width={300}
                         height={300}
+                        onLoadingComplete={() => setLoading(false)}
                         alt="Poster"
                         className="rounded-2xl w-full h-auto md:h-full object-cover"
                     />
