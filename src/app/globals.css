@@ -1,4 +1,16 @@
 @import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+.swiper-button-next {
+  color: white;
+}
+
+.swiper-button-prev {
+  color: white;
+}
 
 :root {
   --background: #ffffff;
