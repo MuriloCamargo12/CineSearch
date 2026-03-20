@@ -1,4 +1,5 @@
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
+
 
 export const options = {
   method: "GET",
@@ -8,7 +9,7 @@ export const options = {
   },
 };
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   
   const { searchParams } = new URL(req.url!);
   const query = searchParams.get('query');
