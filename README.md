@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📽️ CineSearch
 
-## Getting Started
+Aplicação web para busca de filmes e séries em tempo real, consumindo a API do The Movie Database (TMDB).
 
-First, run the development server:
+O projeto foi desenvolvido com foco em performance, experiência do usuário e boas práticas de desenvolvimento Front-end, utilizando Next.js, React e TypeScript.
+
+---
+
+## 🚀 Deploy
+
+🔗 **Acesse o projeto online:**  
+https://cine-search.vercel.app/
+
+---
+
+## ▶️ Como rodar o projeto localmente
 
 ```bash
+# Clonar o repositório
+git clone https://github.com/MuriloCamargo12/CineSearch.git
+
+# Entrar na pasta do projeto
+cd cinesearch
+
+# Acesse developer.themoviedb.org para gerar uma KEY da API
+
+# Criar arquivo .env na raiz com:
+
+TMDB_KEY=KeyGeradaDoTheMovieDB
+
+# Instalar dependências
+npm install
+
+# Rodar o projeto
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tecnologias utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js (App Router)
+- React (Hooks)
+- TypeScript
+- Tailwind CSS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📚 Bibliotecas utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+- Swiperjs
+- Tabler.io
+- TailWindCSS Animated
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Funcionalidades
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 🔎 Busca de filmes e séries em tempo real  
+- 🎬 Visualização de detalhes completos em modal (sinopse, nota, data de lançamento)  
+- ❌ Tratamento de estados: erro e sem resultados  
+- 📱 Layout totalmente responsivo (mobile e desktop)  
+- ✨ Animações e transições suaves na interface  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧠 Aprendizados
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Durante o desenvolvimento deste projeto, pratiquei:
+
+- Consumo e tratamento de API externa The Movie Database (TMDB)
+- Gerenciamento de estado assíncrono com React Hooks
+- Tratamento de loading, erro e estados vazios
+- Organização e componentização de interfaces
+- Uso de rotas dinâmicas com Next.js (App Router)
+- Uso de variáveis de ambiente (.env)
+- Deploy e configuração na Vercel
+
+---
+
+🆘 Precisa de ajuda?
+Entre em contato comigo pelo Linkedin:
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/murilo-camargo-morais-9b94463b2/)
