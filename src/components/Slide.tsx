@@ -5,6 +5,7 @@ import Image from "next/image";
 import Conteudo from "@/types/Conteudo";
 import { Navigation } from "swiper/modules";
 import ResultadoDaPesquisa from "./ResultadoDaPesquisa";
+import Loading from "@/app/loading";
 
 
 interface SlideProps {
@@ -19,14 +20,17 @@ export default function Slide(props: SlideProps) {
     const [conteudos, setConteudos] = useState<Conteudo[]>([])
     const [ativo, setAtivo] = useState(false)
     const [selecionado, setSelecionado] = useState({})
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function buscar() {
+            setLoading(true)
 
             const res = await fetch(props.rota)
             const data = await res.json()
 
             setConteudos(data.results)
+            setLoading(false)
         }
 
         buscar()
@@ -34,6 +38,9 @@ export default function Slide(props: SlideProps) {
     return (
         <>
             {ativo && <ResultadoDaPesquisa conteudo={selecionado} fechar={() => setAtivo(!ativo)} />}
+                {loading ? (
+                    <Loading/>
+                ): 
             <section className="flex justify-center" id={props.id}>
                 <div className="w-10/12 mt-2 flex flex-col gap-2">
                     {conteudos.length > 0 ? <h1 className="text-2xl font-black">{props.categoria}</h1> : ""}
@@ -72,6 +79,7 @@ export default function Slide(props: SlideProps) {
                     </div>
                 </div>
             </section>
+                }
         </>
     )
 }
