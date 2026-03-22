@@ -9,7 +9,7 @@ O projeto foi desenvolvido com foco em performance, experiência do usuário e b
 ## 🚀 Deploy
 
 🔗 **Acesse o projeto online:**  
-cine-search.vercel.app
+https://cine-search.vercel.app/
 
 ---
 
