@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import Loading from "@/app/loading"
 import NaoEncontrado from "@/components/NaoEncontrado"
@@ -26,15 +27,30 @@ export default function Resultados() {
     const [ativo, setAtivo] = useState(false)
     const [selecionado, setSelecionado] = useState({})
     const [loading, setLoading] = useState(true)
+    const [erro, setErro] = useState(null)
+
+    if(erro) {
+        throw new Error(erro)
+    }
 
     useEffect(() => {
         async function buscar() {
-            setLoading(true)
-            const res = await fetch(`/api/buscar/?query=${query}`)
-            const data = await res.json()
+            try {
+                setLoading(true)
+                const res = await fetch(`/api/buscar/?query=${query}`)
+                if(!res.ok) {
+                    const dataErro = await res.json()
+                    throw new Error(dataErro.message || "Erro na requisição!")
+                }
+                const data = await res.json()
+                setResultado(data.results)
 
-            setResultado(data.results)
-            setLoading(false)
+            } catch (erro: any)  {
+                setErro(erro)
+            }finally {
+                setLoading(false)
+            }
+
         }
         buscar()
     }, [query])

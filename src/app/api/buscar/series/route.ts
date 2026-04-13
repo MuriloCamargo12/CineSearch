@@ -1,9 +1,20 @@
 import { options } from "../route"
 
 export async function GET() {
-    const res = await fetch("https://api.themoviedb.org/3/tv/top_rated?language=pt-BR", options)
+    try {
+        const res = await fetch("https://api.themoviedb.org/3/tv/top_rated?language=pt-BR", options)
 
-    const data = await res.json()
+        if(!res.ok) {
+            throw new Error(`Erro na API TMDB: ${res.status}`)
+        }
 
-    return Response.json(data)
+        const data = await res.json()
+        return Response.json(data)
+    } catch {
+        return Response.json(
+            { message: "Erro interno ao buscar Séries" },
+            { status: 500 }
+        )
+    }
+
 }

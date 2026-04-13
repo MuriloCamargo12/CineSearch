@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { useEffect, useState } from "react";
@@ -21,20 +22,33 @@ export default function Slide(props: SlideProps) {
     const [ativo, setAtivo] = useState(false)
     const [selecionado, setSelecionado] = useState({})
     const [loading, setLoading] = useState(true)
+    const [erro, setErro] = useState(null)
+
+    if(erro) {
+        throw new Error(erro)
+    }
 
     useEffect(() => {
         async function buscar() {
-            setLoading(true)
-
-            const res = await fetch(props.rota)
-            const data = await res.json()
-
-            setConteudos(data.results)
-            setLoading(false)
+            try {
+                setLoading(true)
+                const res = await fetch(props.rota)
+                if(!res.ok) {
+                    const dataErro = await res.json()
+                    throw new Error(dataErro.message || "Erro na requisição!")
+                }
+                const data = await res.json()
+                setConteudos(data.results)
+            }catch (error: any) {
+                setErro(error)
+            }finally {
+                setLoading(false)
+            }
         }
 
         buscar()
     }, [props.rota])
+
     return (
         <>
             {ativo && <ResultadoDaPesquisa conteudo={selecionado} fechar={() => setAtivo(!ativo)} />}
